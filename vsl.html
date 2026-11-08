@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The McDonough Opportunity — HTML Slides</title>
+<style>
+  :root{
+    --bg:#f5f7fb;
+    --bg-alt:#e0f2fe;
+    --panel:#ffffff;
+    --ink:#0f172a;
+    --ink-soft:#334155;
+    --muted:#6b7280;
+    --accent:#0ea5e9;
+    --accent-strong:#0284c7;
+    --highlight:#f97316;
+    --success:#10b981;
+    --shadow:0 28px 60px -38px rgba(15,23,42,.55);
+    --radius:28px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;color:var(--ink);font:16px/1.55 "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:linear-gradient(135deg,var(--bg),var(--bg-alt));}
+  body{-webkit-font-smoothing:antialiased;}
+  .deck{position:relative;height:100%;width:100%;overflow:hidden;padding:3vh 3vw;display:flex;align-items:center;justify-content:center;}
+  .slide{display:none;height:100%;width:100%;padding:2vh 0;}
+  .slide.active{display:flex;animation:fadeIn .45s ease both;}
+  .wrap{margin:auto;width:100%;max-width:1120px;position:relative;}
+  .surface{background:var(--panel);padding:clamp(32px,5vw,64px);border-radius:var(--radius);box-shadow:var(--shadow);}
+  .cover{padding:0;}
+  .cover::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(15,23,42,.78),rgba(15,23,42,.4)),var(--bg-image);background-size:cover;background-position:center;}
+  .cover .wrap{max-width:none;height:100%;}
+  .cover .surface{background:transparent;box-shadow:none;height:100%;display:flex;align-items:center;justify-content:center;padding:clamp(56px,10vw,120px);}
+  .cover .headline{max-width:720px;color:#f8fafc;}
+  .cover .headline h1{color:#fff;}
+
+  h1,h2,h3{margin:0 0 18px;line-height:1.1;color:var(--ink);}
+  h1{font-size:clamp(34px,5.6vw,62px);letter-spacing:-.015em;}
+  h2{font-size:clamp(26px,4vw,42px);letter-spacing:-.01em;}
+  h3{font-size:clamp(20px,3vw,28px);color:var(--accent-strong);}
+  p{margin:0 0 16px;font-size:clamp(16px,2.1vw,21px);color:var(--ink-soft);} 
+  p.lead{font-size:clamp(20px,3vw,28px);color:#e8f4ff;max-width:600px;margin-bottom:28px;}
+  ul{margin:0;padding:0 0 0 20px;font-size:clamp(16px,2vw,20px);color:var(--ink-soft);}
+  ul ul{margin-top:8px;padding-left:18px;font-size:clamp(15px,1.8vw,18px);}
+  li{margin:8px 0;}
+
+  .kicker{text-transform:uppercase;letter-spacing:.14em;font-weight:600;font-size:.85em;color:var(--accent-strong);margin-bottom:14px;} 
+  .cover .kicker{color:#7dd3fc;}
+
+  .pill{display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:999px;font-size:.9em;font-weight:600;color:var(--accent-strong);background:rgba(14,165,233,.12);border:1px solid rgba(14,165,233,.35);margin:6px 10px 0 0;backdrop-filter:blur(6px);} 
+  .pill::before{content:"";width:6px;height:6px;border-radius:999px;background:var(--accent);display:inline-block;}
+
+  .grid{display:grid;grid-template-columns:1fr;gap:clamp(24px,4vw,48px);align-items:center;}
+  @media (min-width:940px){.grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);} }
+  .grid.align-top{align-items:start;}
+  .media{position:relative;border-radius:22px;overflow:hidden;box-shadow:0 20px 45px -35px rgba(15,23,42,.65);min-height:220px;}
+  .media img{display:block;width:100%;height:100%;object-fit:cover;}
+  .media::after{content:"";position:absolute;inset:0;border:1px solid rgba(14,165,233,.25);border-radius:inherit;pointer-events:none;mix-blend-mode:screen;}
+
+  .list-accent li::marker{color:var(--accent-strong);font-weight:600;}
+  .metric{font-weight:700;color:var(--ink);background:linear-gradient(120deg,rgba(14,165,233,.18),rgba(14,165,233,.04));padding:2px 8px;border-radius:8px;}
+  .callout{border-left:4px solid var(--accent);padding-left:18px;margin-top:22px;color:var(--ink-soft);}
+  .callout strong{color:var(--ink);}
+
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:22px;}
+  .stat-card{padding:20px;border-radius:18px;background:linear-gradient(140deg,rgba(14,165,233,.1),rgba(14,165,233,.02));border:1px solid rgba(148,163,184,.25);}
+  .stat-card h3{margin:0;font-size:clamp(22px,3vw,32px);color:var(--accent-strong);} 
+  .stat-card p{margin:6px 0 0;color:var(--muted);font-size:clamp(14px,1.8vw,18px);} 
+
+  .guarantee-card{margin-top:24px;padding:26px;border-radius:22px;background:linear-gradient(135deg,rgba(249,115,22,.14),rgba(249,115,22,.04));border:1px solid rgba(249,115,22,.35);} 
+  .guarantee-card h3{color:var(--highlight);margin-bottom:12px;}
+
+  .timeline{display:grid;gap:18px;margin-top:12px;}
+  .timeline-entry{padding:18px 20px;border-radius:18px;background:rgba(14,165,233,.08);} 
+  .timeline-entry strong{display:block;color:var(--accent-strong);margin-bottom:6px;}
+
+  .progress-horizontal{flex:1;height:8px;background:rgba(148,163,184,.25);border-radius:999px;overflow:hidden;margin:0 14px;}
+  .bar{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-strong));transition:width .25s ease;}
+  .controls{position:absolute;left:0;right:0;bottom:18px;display:flex;align-items:center;justify-content:center;gap:14px;padding:0 18px;}
+  .btn{appearance:none;border:1px solid rgba(148,163,184,.35);background:var(--panel);color:var(--ink);padding:10px 18px;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;transition:.18s ease;min-width:110px;box-shadow:0 8px 22px -18px rgba(15,23,42,.65);} 
+  .btn:hover{transform:translateY(-1px);border-color:var(--accent-strong);color:var(--accent-strong);} 
+  .btn:active{transform:translateY(0);}
+  .counter{font-size:14px;color:var(--muted);min-width:68px;text-align:center;}
+  .help{position:absolute;top:18px;right:24px;font-size:13px;color:var(--muted);}
+
+  .back-link{position:absolute;top:18px;left:24px;display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600;color:var(--accent-strong);text-decoration:none;background:rgba(14,165,233,.14);border:1px solid rgba(14,165,233,.3);box-shadow:0 10px 25px -20px rgba(14,165,233,.8);transition:.2s ease;}
+  .back-link:hover{transform:translateY(-1px);background:rgba(14,165,233,.2);border-color:rgba(14,165,233,.45);} 
+
+  .progress-rail{position:absolute;top:50%;right:36px;transform:translateY(-50%);height:60vh;max-height:520px;width:6px;border-radius:999px;background:rgba(148,163,184,.25);overflow:hidden;display:none;}
+  .progress-thumb{width:100%;height:0;background:linear-gradient(180deg,var(--accent),var(--accent-strong));transition:height .25s ease;}
+  @media (min-width:1100px){.progress-rail{display:block;}}
+
+  .footer-note{margin-top:12px;color:var(--muted);font-size:clamp(12px,1.8vw,14px);} 
+
+  @media (max-width:880px){
+    .deck{padding:1.8vh 12px;}
+    .controls{position:static;margin-top:16px;flex-wrap:wrap;}
+    .help{position:static;text-align:center;margin-bottom:10px;}
+  }
+
+  @keyframes fadeIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+  /* Print/PDF */
+  @media print{
+    body{background:#fff;}
+    .deck{padding:0;}
+    .slide{display:block;height:auto;page-break-after:always;padding:0;}
+    .surface{box-shadow:none;border-radius:0;padding:48px 40px;}
+    .cover::before{position:static;}
+    .cover .surface{padding:80px 48px;}
+    .controls,.help,.progress-rail,.back-link{display:none !important;}
+  }
+  @keyframes fadeIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+<div class="deck" aria-live="polite">
+  <a class="back-link" href="index.html">&larr; Back to Proposal</a>
+  <div class="help"><span>Use ← → or click buttons to navigate</span></div>
+  <div class="progress-rail" aria-hidden="true"><div class="progress-thumb" id="barVertical"></div></div>
+
+  <!-- Slide 1 -->
+  <section class="slide active cover" style="--bg-image:url('./JPEG/diverse-team-of-specialists-with-computer-on-const-2023-11-27-05-09-04-utc.jpg');">
+    <div class="wrap">
+      <div class="surface">
+        <div class="headline">
+          <div class="kicker">The McDonough Opportunity</div>
+          <h1>Own premium, predictable roofing in Dalton</h1>
+          <p class="lead">Turn trust into margin, control, and a waitlist that pays.</p>
+          <div>
+            <span class="pill">Category Leadership</span>
+            <span class="pill">Operating Leverage</span>
+            <span class="pill">No Website Needed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 2 -->
+  <section class="slide">
+    <div class="wrap surface">
+      <div class="grid">
+        <div>
+          <h2>The Opening Scene</h2>
+          <ul class="list-accent">
+            <li>Dalton already tags your name without ads or a website.</li>
+            <li>You’re the first call when roofs and timelines get tight.</li>
+            <li>The question: will you just be busy—or set the pace for everyone else?</li>
+          </ul>
+        </div>
+        <figure class="media">
+          <img src="./JPEG/construction-worker-on-a-renovation-roof-the-house-2023-11-27-05-03-02-utc.jpg" alt="Crew renovating a residential roof" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 3 -->
+  <section class="slide">
+    <div class="wrap surface">
+      <div class="grid">
+        <div>
+          <h2>The Opportunity You Can Own</h2>
+          <ul class="list-accent">
+            <li>Set the price. Set the pace. Set the standard.</li>
+            <li>Turn scarcity into an asset customers value.</li>
+            <li>Transform today’s trust into an operating system competitors can’t copy.</li>
+          </ul>
+        </div>
+        <figure class="media">
+          <img src="./JPEG/professional-construction-site-worker-posing-on-to-2023-11-27-05-17-31-utc.jpg" alt="Confident professional roofer standing on a build" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 4 -->
+  <section class="slide">
+    <div class="wrap surface">
+      <div class="grid">
+        <div>
+          <h2>What You Become (Identity Shift)</h2>
+          <ul class="list-accent">
+            <li>The benchmark: others quote around your calendar.</li>
+            <li>The signal: a public Capacity Index the town watches.</li>
+            <li>The asset: a documented method that increases company value every quarter.</li>
+          </ul>
+        </div>
+        <figure class="media">
+          <img src="./JPEG/team-of-architects-people-in-group-on-construciton-2023-11-27-05-01-00-utc.jpg" alt="Architects reviewing plans together" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 5 -->
+  <section class="slide">
+    <div class="wrap surface">
+      <h2>New Rules (Alpha Mindset)</h2>
+      <ul class="list-accent">
+        <li>Scarcity is designed, not accidental.</li>
+        <li>Transparency is marketing.</li>
+        <li>Choice engineering beats haggling.</li>
+        <li>Density beats distance.</li>
+        <li>Membership beats one-off.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Slide 6 -->
+  <section class="slide">
+    <div class="wrap surface">
+      <div class="grid align-top">
+        <div>
+          <h2>Alpha Play 1: Monetize Time</h2>
+          <ul class="list-accent">
+            <li>Weekly Capacity Index: publish what’s open and what’s not.</li>
+            <li>Priority Start: limited rush slots priced like airline upgrades.</li>
+            <li><strong>Outcome:</strong> time becomes a premium product; the schedule stays calm.</li>
+          </ul>
+        </div>
+        <figure class="media">
+          <img src="./JPEG/roofer-working-at-metal-profile-roof-installation-2023-11-27-05-20-57-utc.jpg" alt="Technician installing standing-seam metal roofing" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 7 -->
+  <section class="slide">
+    <div class="wrap surface">
+      <div class="grid align-top">
+        <div>
+          <h2>Alpha Play 2: Monetize Choice</h2>
+          <ul class="list-accent">
+            <li>Good–Better–Best packages that sell identity, not parts.</li>
+            <li>Financing on every option to normalize premium.</li>
+            <li><strong>Outcome:</strong> higher average ticket without pressure.</li>
+          </ul>
+        </div>
+        <figure class="media">
+          <img src="./JPEG/male-builder-doing-thermal-insulation-on-roof-of-w-2023-11-27-05-01-48-utc.jpg" alt="Installer adding insulation to a roof" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 8 -->
+  <section class="slide">
+    <div class="wrap surface">
+      <div class="grid align-top">
+        <div>
+          <h2>Alpha Play 3: Monetize Density</h2>
+          <ul class="list-accent">
+            <li>Two dominance corridors:
+              <ul>
+                <li>Dalton–Orrville–Wooster</li>
+                <li>Massillon–Navarre–Brewster</li>
+              </ul>
+            </li>
+            <li>Outside radius = case-by-case with a premium travel fee.</li>
+            <li><strong>Outcome:</strong> more profit per crew-day; crews home earlier.</li>
+          </ul>
+        </div>
+        <figure class="media">
+          <img src="./JPEG/aerial-view-of-a-private-house-with-aerated-concre-2023-11-27-05-23-48-utc.jpg" alt="Aerial view of residential neighborhood roofs" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 9 -->
+  <section class="slide">
+    <div class="wrap surface">
+      <div class="grid align-top">
+        <div>
+          <h2>Alpha Play 4: Monetize Proof</h2>
+          <ul class="list-accent">
+            <li>Remote measurements + 20-point photo checklist (CompanyCam).</li>
+            <li>Review prompts that highlight clean-up, communication, on-time starts.</li>
+            <li><strong>Outcome:</strong> an evidence engine that pre-sells your quality.</li>
+          </ul>
+        </div>
+        <figure class="media">
+          <img src="./JPEG/engineer-inspect-building-structure-technicians-lo-2024-01-10-12-54-58-utc.jpg" alt="Engineer reviewing site photos on a tablet" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 10 -->
+  <section class="slide">
+    <div class="wrap surface">
+      <div class="grid align-top">
+        <div>
+          <h2>Alpha Play 5: Monetize Relationship</h2>
+          <ul class="list-accent">
+            <li>Roof Health Plan: annual inspection, gutter clean, minor tune-ups.</li>
+            <li>Priority storm response + optional pre-storm drone baseline.</li>
+            <li><strong>Outcome:</strong> recurring revenue and first-call status after weather hits.</li>
+          </ul>
+        </div>
+        <figure class="media">
+          <img src="./JPEG/team-of-cheerful-construction-professionals-greeti-2023-12-18-21-21-16-utc.jpg" alt="Team greeting a homeowner" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 11 -->
+  <section class="slide">
+    <div class="wrap surface">
+      <div class="grid align-top">
+        <div>
+          <h2>Your Market, Your Territory</h2>
+          <ul class="list-accent">
+            <li>Primary service radius: ~25 miles around <span class="metric">44618</span>.</li>
+            <li>Priority density in Dalton–Orrville–Wooster and Massillon–Navarre–Brewster.</li>
+            <li>Publicly commit to the territory you dominate.</li>
+          </ul>
+        </div>
+        <figure class="media">
+          <img src="./JPEG/house-roof-construction-2023-11-27-05-23-20-utc.jpg" alt="Framed roof ready for installation" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 12 -->
+  <section class="slide">
+    <div class="wrap surface">
+      <div class="grid align-top">
+        <div>
+          <h2>What Homeowners Typically Invest (Dalton Area)</h2>
+          <ul class="list-accent">
+            <li>Asphalt shingle replacement: <span class="metric">$9,500–$18,500</span></li>
+            <li>Standing seam metal: <span class="metric">$18,000–$38,000</span></li>
+            <li>Flat/low-slope (EPDM/TPO/mod): <span class="metric">$10,000–$24,000</span></li>
+            <li>Repairs/tune-ups: <span class="metric">$250–$1,800</span></li>
+            <li>Transparent ranges reinforce premium positioning.</li>
+          </ul>
+        </div>
+        <figure class="media">
+          <img src="./JPEG/smiley-builder-in-a-hard-hat-holding-a-drill-drive-2023-11-27-04-50-47-utc.jpg" alt="Friendly roofer with drill on site" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 13 -->
+  <section class="slide">
+    <div class="wrap surface">
+      <div class="grid align-top">
+        <div>
+          <h2>The 30-Day Activation (Structured, Proven)</h2>
+          <ul class="list-accent">
+            <li>Week 1: Packages live, financing active, Priority Start set, Capacity post drafted.</li>
+            <li>Week 2: Google Business Profile tuned; review prompts + photo checklist running.</li>
+            <li>Week 3: Corridor routing rules; supplier staged deliveries/hot-shots.</li>
+            <li>Week 4: Roof Health Plan launch; Alpha Dashboard live; foreman briefings.</li>
+          </ul>
+        </div>
+        <figure class="media">
+          <img src="./JPEG/worker-with-safety-helmet-checking-and-operating-s-2023-11-27-05-30-20-utc.jpg" alt="Supervisor reviewing a project schedule" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 14 -->
+  <section class="slide">
+    <div class="wrap surface">
+      <h2>Effectiveness Math (Conservative)</h2>
+      <div class="stats">
+        <div class="stat-card">
+          <h3>+12–20%</h3>
+          <p>Average ticket via packages + financing.</p>
+        </div>
+        <div class="stat-card">
+          <h3>1–2 Jobs</h3>
+          <p>Monthly Priority Starts turn rush into revenue.</p>
+        </div>
+        <div class="stat-card">
+          <h3>Higher Margin</h3>
+          <p>Fewer callbacks and tighter routing lift profit per crew-day.</p>
+        </div>
+        <div class="stat-card">
+          <h3>Fast ROI</h3>
+          <p>One to two upgraded roofs typically cover the build.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 15 -->
+  <section class="slide">
+    <div class="wrap surface">
+      <h2>Simple by Design</h2>
+      <ul class="list-accent">
+        <li>Lives where you already win: Facebook, Google Business Profile, contracts.</li>
+        <li>Light, proven tools: measurements + photo checklist.</li>
+        <li>No website. No ad spend. No software sprawl.</li>
+      </ul>
+      <div class="callout"><strong>Focus:</strong> deploy faster than competitors can react.</div>
+    </div>
+  </section>
+
+  <!-- Slide 16 -->
+  <section class="slide">
+    <div class="wrap surface">
+      <div class="grid align-top">
+        <div>
+          <h2>Crew Wins (Pride and Safety)</h2>
+          <ul class="list-accent">
+            <li>Clear scope, staged deliveries, fewer surprises.</li>
+            <li>Photo checklist protects the crew and earns praise.</li>
+            <li>Predictable rhythm; earlier wrap times.</li>
+          </ul>
+        </div>
+        <figure class="media">
+          <img src="./JPEG/construction-worker-between-wooden-house-skeleton-2023-11-27-05-04-36-utc.jpg" alt="Crew coordinating from roof framing" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 17 -->
+  <section class="slide">
+    <div class="wrap surface">
+      <h2>Strategic Assets You Create</h2>
+      <ul class="list-accent">
+        <li>The McDonough Method: packages, scripts, SOPs, warranties.</li>
+        <li>Capacity Index: a weekly market signal.</li>
+        <li>Proof library: photo-verified jobs that sell for you.</li>
+        <li>Alpha Dashboard: average ticket, profit per crew-day, cycle time, review rate.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Slide 18 -->
+  <section class="slide">
+    <div class="wrap surface">
+      <h2>Your Advantage (Asymmetric Risk)</h2>
+      <div class="guarantee-card">
+        <h3>60-Day Lift Guarantee</h3>
+        <p>If average ticket isn’t up <span class="metric">10%</span>, we work free for 30 more days.</p>
+      </div>
+      <ul class="list-accent">
+        <li>Week-2 checkpoint: off-track? Opt out, no hard feelings.</li>
+        <li>Small owner time ask: ~90 minutes/week.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Slide 19 -->
+  <section class="slide">
+    <div class="wrap surface">
+      <div class="grid align-top">
+        <div>
+          <h2>Co-Author The Plan</h2>
+          <ul class="list-accent">
+            <li>Pilot (2–4 weeks): two crews, two corridors; measure lift fast.</li>
+            <li>Core (30 days): full rollout, memberships, supplier protocols, dashboard.</li>
+            <li>High-value add-ons:
+              <ul>
+                <li>Crew Safety + Photo Bootcamp</li>
+                <li>Manufacturer certification pathway</li>
+                <li>Supplier service agreement facilitation</li>
+                <li>Community storm-readiness night (you featured)</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <figure class="media">
+          <img src="./JPEG/both-of-technicians-is-installing-solar-panels-on-2023-12-28-21-53-17-utc.jpg" alt="Technicians collaborating on a roof install" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 20 -->
+  <section class="slide">
+    <div class="wrap surface">
+      <div class="grid align-top">
+        <div>
+          <h2>The Invitation</h2>
+          <ul class="list-accent">
+            <li>Dalton already voted for you—now own the category.</li>
+            <li>Set the price. Set the pace. Set the standard.</li>
+            <li>Next: 45-minute Alpha Workshop to finalize packages, Priority Start, radius, and success metrics.</li>
+          </ul>
+        </div>
+        <figure class="media">
+          <img src="./JPEG/cautious-construction-site-worker-working-at-heigh-2023-11-27-05-36-53-utc.jpg" alt="Construction lead inspecting a roof" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 21 -->
+  <section class="slide">
+    <div class="wrap surface">
+      <div class="grid">
+        <div>
+          <h2>Call to Action</h2>
+          <ul class="list-accent">
+            <li>Reply “ALPHA” to lock your workshop.</li>
+            <li>Bring: last 20 jobs (price, materials, duration, callbacks) + preferred zips.</li>
+            <li>We’ll bring templates, posts, and the dashboard to deploy immediately.</li>
+          </ul>
+          <div class="footer-note">Tip: Press Ctrl/Cmd+P to print or save as PDF. Each slide prints on its own page.</div>
+        </div>
+        <figure class="media">
+          <img src="./JPEG/working-construction-contractor-2023-11-27-05-16-30-utc.jpg" alt="Contractor shaking hands after agreement" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="controls" aria-label="Slide controls">
+    <button class="btn" id="prevBtn" aria-label="Previous slide">← Prev</button>
+    <button class="btn" id="startBtn" aria-label="Start over">⟲ Start Over</button>
+    <div class="progress-horizontal" aria-hidden="true"><div class="bar" id="bar"></div></div>
+    <div class="counter" id="counter">1 / 21</div>
+    <button class="btn" id="nextBtn" aria-label="Next slide">Next →</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  const counter = document.getElementById('counter');
+  const bar = document.getElementById('bar');
+  const barVertical = document.getElementById('barVertical');
+  const prevBtn = document.getElementById('prevBtn');
+  const startBtn = document.getElementById('startBtn');
+  const nextBtn = document.getElementById('nextBtn');
+
+  let idx = 0;
+
+  function progressValue(n){
+    if(total <= 1) return 100;
+    return (n/(total-1))*100;
+  }
+
+  function updateProgress(){
+    const value = progressValue(idx);
+    if(bar) bar.style.width = value + '%';
+    if(barVertical) barVertical.style.height = value + '%';
+  }
+
+  function show(i, pushHash = true){
+    if(i < 0 || i >= total) return;
+    slides[idx].classList.remove('active');
+    idx = i;
+    slides[idx].classList.add('active');
+    counter.textContent = (idx + 1) + ' / ' + total;
+    updateProgress();
+    if(pushHash){
+      history.replaceState(null, '', '#' + (idx + 1));
+    }
+    focusSlide();
+  }
+
+  function focusSlide(){
+    const h = slides[idx].querySelector('h1, h2');
+    if(h){
+      h.setAttribute('tabindex','-1');
+      h.focus();
+    }
+  }
+
+  function next(){ if(idx < total - 1) show(idx + 1); }
+  function prev(){ if(idx > 0) show(idx - 1); }
+
+  prevBtn.addEventListener('click', prev);
+  startBtn.addEventListener('click', () => show(0));
+  nextBtn.addEventListener('click', next);
+
+  window.addEventListener('keydown', (e)=>{
+    const k = e.key;
+    if(['ArrowRight','PageDown',' '].includes(k)){ e.preventDefault(); next(); }
+    if(['ArrowLeft','PageUp','Backspace'].includes(k)){ e.preventDefault(); prev(); }
+    if(k === 'Home'){ e.preventDefault(); show(0); }
+    if(k === 'End'){ e.preventDefault(); show(total - 1); }
+  }, {passive:false});
+
+  function initFromHash(){
+    const n = parseInt(location.hash.replace('#',''),10);
+    if(!isNaN(n) && n >= 1 && n <= total){
+      show(n - 1, false);
+    }else{
+      show(0, false);
+    }
+  }
+
+  window.addEventListener('hashchange', initFromHash);
+
+  initFromHash();
+  updateProgress();
+})();
+</script>
+</body>
+</html>

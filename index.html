@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McDonough Roofing Proposal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        @media print {
+            @page { margin: 0; size: letter; }
+            body { margin: 0; }
+            .page-break { page-break-after: always; }
+            button { display: none !important; }
+            .no-print { display: none !important; }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background: #0a0a0a;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .page {
+            padding: 0.75in;
+            min-height: 11in;
+            background: white;
+            position: relative;
+        }
+        
+        /* Hero Header */
+        .hero-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            padding: 3.5rem 0.75in;
+            margin: -0.75in -0.75in 0 -0.75in;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-label {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #93c5fd;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: #cbd5e1;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+        }
+        
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.9rem 1.8rem;
+            border-radius: 999px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            box-shadow: 0 14px 30px rgba(59, 130, 246, 0.25);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 36px rgba(59, 130, 246, 0.3);
+        }
+
+        .hero-btn--outline {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            color: #e2e8f0;
+            box-shadow: none;
+        }
+
+        .hero-btn--outline:hover {
+            background: rgba(15, 23, 42, 0.75);
+            border-color: rgba(226, 232, 240, 0.6);
+        }
+
+        /* Meta Info Bar */
+        .meta-bar {
+            background: linear-gradient(to right, #f8fafc, #f1f5f9);
+            padding: 2rem 0.75in;
+            margin: 0 -0.75in 3rem -0.75in;
+            border-bottom: 1px solid #e2e8f0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .meta-item {
+            position: relative;
+        }
+        
+        .meta-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+            border-radius: 2px;
+        }
+        
+        .meta-item-content {
+            padding-left: 1.5rem;
+        }
+        
+        .meta-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .meta-value {
+            font-size: 1rem;
+            color: #0f172a;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        /* Typography */
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 3rem 0 1.5rem 0;
+            letter-spacing: -1px;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 2.5rem 0 1rem 0;
+            letter-spacing: -0.5px;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            color: #334155;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        
+        strong {
+            font-weight: 600;
+            color: #0f172a;
+        }
+        
+        /* Objective Cards */
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        
+        .objective-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid #e2e8f0;
+            padding: 2rem;
+            border-radius: 12px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .objective-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+            border-radius: 12px 0 0 12px;
+        }
+        
+        .objective-icon {
+            font-size: 0.75rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .objective-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.3px;
+        }
+        
+        .objective-desc {
+            font-size: 0.9rem;
+            color: #475569;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        /* Timeline */
+        .timeline {
+            margin: 2.5rem 0;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+        
+        .timeline-marker {
+            width: 100px;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .timeline-week {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+        
+        .timeline-content {
+            flex: 1;
+            background: white;
+            border: 2px solid #e2e8f0;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-left: 2rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            letter-spacing: -0.3px;
+        }
+        
+        .timeline-content ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .timeline-content li {
+            margin-bottom: 0.6rem;
+            color: #475569;
+            font-size: 0.9rem;
+        }
+        
+        .timeline-time {
+            display: inline-block;
+            background: #f1f5f9;
+            color: #64748b;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        
+        .pricing-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card.featured {
+            border-color: #3b82f6;
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .pricing-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .pricing-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #3b82f6;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+        
+        .pricing-desc {
+            font-size: 0.9rem;
+            color: #64748b;
+            text-align: center;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        /* Payment Box */
+        .payment-box {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .payment-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+        }
+        
+        .payment-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .payment-box h3 {
+            color: white;
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+        
+        .payment-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+        
+        .payment-box li {
+            color: #cbd5e1;
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1rem;
+        }
+        
+        .payment-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .payment-box a {
+            color: #93c5fd;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(147, 197, 253, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .payment-box a:hover {
+            color: white;
+            border-bottom-color: white;
+        }
+        
+        /* Guarantee */
+        .guarantee-box {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            position: relative;
+        }
+        
+        .guarantee-box::before {
+            content: '✓';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #10b981;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .guarantee-box h3 {
+            color: #065f46;
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+        
+        .guarantee-box p {
+            color: #047857;
+            margin-bottom: 1rem;
+        }
+        
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            margin: 3rem 0;
+            color: white;
+        }
+        
+        .cta-section p {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+        
+        /* Signature */
+        .signature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+        
+        .signature-block {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            padding: 2rem;
+            border-radius: 12px;
+        }
+        
+        .signature-block strong {
+            display: block;
+            font-size: 1.1rem;
+            color: #0f172a;
+            margin-bottom: 2rem;
+        }
+        
+        .signature-line {
+            border-bottom: 2px solid #cbd5e1;
+            height: 60px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .signature-label {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Appendix */
+        .appendix {
+            background: #fafafa;
+            border-left: 4px solid #94a3b8;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        
+        .appendix h3 {
+            color: #475569;
+            font-size: 1.1rem;
+            margin-top: 0;
+        }
+        
+        .appendix p, .appendix li {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        /* Download Button */
+        .download-btn {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+            z-index: 1000;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
+        }
+        
+        /* Lists */
+        ul {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            color: #475569;
+            line-height: 1.7;
+        }
+        
+        /* Metric Cards */
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        
+        .metric-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .metric-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #64748b;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-desc {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <button class="download-btn no-print" onclick="window.print()">Download PDF</button>
+    
+    <div class="container">
+        <!-- Page 1: Hero & Executive Summary -->
+        <div class="page">
+            <div class="hero-header">
+                <div class="hero-content">
+                    <span class="hero-label">Strategic Proposal</span>
+                    <h1>The McDonough<br>Opportunity</h1>
+                    <div class="hero-subtitle">Capacity-First Profit Kit</div>
+                    <div class="hero-actions no-print">
+                        <a
+                            class="hero-btn"
+                            href="https://youtu.be/4uJMksL0YtQ"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            Watch the VSL
+                        </a>
+                        <a
+                            class="hero-btn hero-btn--outline"
+                            href="vsl.html"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            View the Slides
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="meta-bar">
+                <div class="meta-item">
+                    <div class="meta-item-content">
+                        <div class="meta-label">Prepared For</div>
+                        <div class="meta-value">McDonough Roofing<br>Dalton, OH</div>
+                    </div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-item-content">
+                        <div class="meta-label">Prepared By</div>
+                        <div class="meta-value">
+                            D'Vaughn House<br>
+                            Date: 11/12/2025<br>
+                            Valid Through: 11/12/2026
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2>Executive Summary</h2>
+            <p>Dalton already voted for McDonough Roofing. This proposal turns that trust into a category you own: <strong>premium, predictable roofing that's worth waiting for.</strong> We will design scarcity, signal your standards publicly, and monetize what the market already values from you—certainty and craftsmanship.</p>
+            
+            <p><strong>Outcome:</strong> More margin per job, a calmer schedule, crews home earlier, and a documented "McDonough Method" that makes the business more valuable every quarter. <strong>No website. No extra leads. Pure operating leverage.</strong></p>
+            
+            <h2>Core Objectives</h2>
+            <p style="color: #64748b; font-style: italic; margin-bottom: 2rem;">90 days, with first wins in 30</p>
+            
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <span class="objective-icon">Revenue</span>
+                    <div class="objective-title">Revenue Lift</div>
+                    <p class="objective-desc">Lift average ticket 12–20% by making premium the default (packages + financing)</p>
+                </div>
+                <div class="objective-card">
+                    <span class="objective-icon">Profit</span>
+                    <div class="objective-title">Profit Per Crew</div>
+                    <p class="objective-desc">Increase profit per crew-day 15% through density, pre-qualification, and supplier coordination</p>
+                </div>
+                <div class="objective-card">
+                    <span class="objective-icon">Speed</span>
+                    <div class="objective-title">Cycle Time</div>
+                    <p class="objective-desc">Cut cycle time by 2–3 days via remote measurements, staged deliveries, and photo-verified install checklist</p>
+                </div>
+                <div class="objective-card">
+                    <span class="objective-icon">Control</span>
+                    <div class="objective-title">Capacity Control</div>
+                    <p class="objective-desc">Establish a public Capacity Index and Priority Start option so rush converts to revenue</p>
+                </div>
+                <div class="objective-card">
+                    <span class="objective-icon">Recurring</span>
+                    <div class="objective-title">Recurring Revenue</div>
+                    <p class="objective-desc">Launch a Roof Health Plan for recurring revenue, storm priority, and lifetime value</p>
+                </div>
+                <div class="objective-card">
+                    <span class="objective-icon">Value</span>
+                    <div class="objective-title">Business Value</div>
+                    <p class="objective-desc">Create documented systems that increase enterprise value every quarter</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page 2: Scope of Work -->
+        <div class="page page-break">
+            <h2>Scope of Work</h2>
+            <p style="color: #64748b; font-style: italic; margin-bottom: 2.5rem;">Done-for-you build, co-authored with owner</p>
+            
+            <h3>1) Monetize Time: Capacity Index + Priority Start</h3>
+            <ul>
+                <li>Weekly Capacity & Scheduling post template and cadence</li>
+                <li>Define and price Priority Start (limited rush slots per month)</li>
+                <li>Messaging scripts for Facebook/Messenger, SMS, and Google Business Profile (GBP)</li>
+            </ul>
+            
+            <h3>2) Monetize Choice: Good–Better–Best Packages + Financing</h3>
+            <ul>
+                <li>Three clear roof packages per material type with warranties and upgrades</li>
+                <li>Financing integrated on every quote (0% promo and long-term options)</li>
+                <li>Proposal language, line-item alternatives, and price escalation clause addendum</li>
+            </ul>
+            
+            <h3>3) Monetize Density: Corridor Dominance + Routing Rules</h3>
+            <ul>
+                <li>Service radius finalized (~25 miles around 44618) and two dominance corridors:
+                    <ul>
+                        <li>Dalton–Orrville–Wooster</li>
+                        <li>Massillon–Navarre–Brewster</li>
+                    </ul>
+                </li>
+                <li>Routing rules to maximize revenue per mile and reduce windshield time</li>
+                <li>Minimum job size and referral-out policy for sub-minimum work</li>
+            </ul>
+            
+            <h3>4) Monetize Proof: Photo Checklist + Review Engine</h3>
+            <ul>
+                <li>20-point CompanyCam photo checklist embedded into your install flow</li>
+                <li>Remote measurement workflow (EagleView/Hover) to reduce site visits and rework</li>
+                <li>Review prompts that cue specifics (clean-up, communication, on-time), with SMS/email templates</li>
+            </ul>
+            
+            <h3>5) Monetize Relationship: Roof Health Plan</h3>
+            <ul>
+                <li>Annual plan structure (inspection, gutter clean, minor tune-ups, priority storm response)</li>
+                <li>Enrollment flow (QR/Stripe), member leave-behind card, renewal messaging</li>
+                <li>Optional pre-storm drone baselines for faster, cleaner insurance claims</li>
+            </ul>
+            
+            <h3>6) Strategic Assets and Dashboard</h3>
+            <ul>
+                <li><strong>The McDonough Method:</strong> estimating templates, install SOPs, customer scripts, warranty process</li>
+                <li><strong>Alpha Dashboard:</strong> average ticket, premium-tier selection rate, Priority Start uptake, close rate, profit per crew-day, cycle time, review rate, callback rate, revenue per mile</li>
+                <li>10-minute weekly readout and adjustment cadence</li>
+            </ul>
+        </div>
+        
+        <!-- Page 3: Implementation Timeline -->
+        <div class="page page-break">
+            <h2>Implementation Timeline</h2>
+            <p style="color: #64748b; font-style: italic; margin-bottom: 2.5rem;">30-Day Activation</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="timeline-week">WEEK 1</div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Price, Time, and Intake</div>
+                        <ul>
+                            <li>Finalize Good–Better–Best packages and contract addendum</li>
+                            <li>Set Priority Start pricing and limits; publish first Capacity Index post</li>
+                            <li>Launch 4-question pre-qualification flow (Messenger/text) and minimum job policy</li>
+                        </ul>
+                        <span class="timeline-time">Owner time: 60–90 minutes approvals</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="timeline-week">WEEK 2</div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Proof and Presence</div>
+                        <ul>
+                            <li>Optimize GBP: services, productized packages, photos, Q&A</li>
+                            <li>Start review engine and photo checklist; enable remote measurements</li>
+                            <li>Draft "Typical Investment" ranges for quotes and posts</li>
+                        </ul>
+                        <span class="timeline-time">Owner time: 30–45 minutes review</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="timeline-week">WEEK 3</div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Density and Ops Rhythm</div>
+                        <ul>
+                            <li>Lock service radius and corridor routing rules; map supplier staging</li>
+                            <li>Negotiate supplier protocol: staged deliveries, hot-shots, returns handling</li>
+                            <li>Establish weekly Repair Day cadence and 20-point final inspection walkthrough</li>
+                        </ul>
+                        <span class="timeline-time">Owner time: 45 minutes alignment</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="timeline-week">WEEK 4</div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Membership and Control</div>
+                        <ul>
+                            <li>Launch Roof Health Plan enrollment; member communications live</li>
+                            <li>Turn on Alpha Dashboard; run foreman briefing and Crew Safety + Photo Bootcamp</li>
+                            <li>Publish second Capacity Index with availability signals and one Priority Start slot</li>
+                        </ul>
+                        <span class="timeline-time">Owner time: 60 minutes training and sign-off</span>
+                    </div>
+                </div>
+            </div>
+            
+            <h2>Metrics and Reporting</h2>
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Yield</div>
+                    <div class="metric-value">+12-20%</div>
+                    <p class="metric-desc">Average ticket lift</p>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Flow</div>
+                    <div class="metric-value">-2-3 days</div>
+                    <p class="metric-desc">Cycle time reduction</p>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Profit</div>
+                    <div class="metric-value">+15%</div>
+                    <p class="metric-desc">Per crew-day</p>
+                </div>
+            </div>
+            
+            <p style="margin-top: 2rem;"><strong>Tracking:</strong> Weekly scorecard + recommendations; 30-day and 60-day reviews covering yield (average ticket, premium-tier selection rate, Priority Start uptake, profit per crew-day), flow (cycle time, on-time starts, review rate), quality (callback rate, checklist completion), and density (revenue per mile, job clustering by corridor).</p>
+        </div>
+        
+        <!-- Page 4: Deliverables -->
+        <div class="page page-break">
+            <h2>Deliverables</h2>
+            <p style="color: #64748b; font-style: italic; margin-bottom: 2.5rem;">Ready to use</p>
+            
+            <ul>
+                <li>Capacity Index post template and monthly calendar</li>
+                <li>Priority Start policy and scripts</li>
+                <li>Good–Better–Best package sheets (asphalt, metal, flat)</li>
+                <li>Financing one-pager for homeowners + quote inserts</li>
+                <li>Contract addendum (price escalation) and proposal language</li>
+                <li>Pre-qualification script (Messenger/SMS) + auto-reply snippets</li>
+                <li>20-point CompanyCam photo checklist and final inspection form</li>
+                <li>Supplier staging/returns SOP and contact email draft</li>
+                <li>Roof Health Plan materials: brochure, QR/Stripe checkout, member emails</li>
+                <li>Alpha Dashboard (Google Sheet/Data Studio) and a weekly reporting template</li>
+                <li>McDonough Method binder (digital + printable)</li>
+            </ul>
+            
+            <h2>Client Responsibilities</h2>
+            <ul>
+                <li>Provide last 20 job records (price, material, duration, callbacks) within 5 days of kickoff</li>
+                <li>Identify supplier contact; participate in a short three-way call for delivery protocol</li>
+                <li>Maintain crew participation in the 20-point checklist and final inspection</li>
+                <li>Enable/approve financing provider; we can introduce options if needed</li>
+                <li>Continue core communication through Facebook and GBP (no website build required)</li>
+            </ul>
+        </div>
+        
+        <!-- Page 5: Investment & Pricing -->
+        <div class="page page-break">
+            <h2>Investment and Commercials</h2>
+            
+            <h3>Choose Your Plan</h3>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-name">Lite</div>
+                    <div class="pricing-amount">$4,500</div>
+                    <p class="pricing-desc">Implementation Only<br><br>Excludes supplier negotiation, bootcamp, and dashboard customization</p>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <span class="pricing-badge">Recommended</span>
+                    <div class="pricing-name">Core 30-Day Build</div>
+                    <div class="pricing-amount">$7,500</div>
+                    <p class="pricing-desc">Includes all deliverables, dashboard, supplier coordination, and crew bootcamp</p>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-name">Plus</div>
+                    <div class="pricing-amount">$12,000</div>
+                    <p class="pricing-desc">Core + 30 Days On-Site Coaching<br><br>Adds ride-alongs and hands-on implementation support</p>
+                </div>
+            </div>
+            
+            <div class="payment-box">
+                <div class="payment-content">
+                    <h3>Payment Terms</h3>
+                    <ul>
+                        <li><strong>100% due upfront</strong> to reserve your build window</li>
+                        <li><strong>Secure Payment Link (PayPal):</strong> <a href="https://www.paypal.com/ncp/payment/665TZ6SSAM738" target="_blank">https://www.paypal.com/ncp/payment/665TZ6SSAM738</a></li>
+                        <li><strong>Prefer invoice/ACH?</strong> Reply "INVOICE" and we'll send a same-day invoice</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="guarantee-box">
+                <h3>Guarantee and Risk Reversal</h3>
+                <p><strong>60-Day Lift Guarantee:</strong> If your average ticket doesn't increase at least 10% within 60 days of go-live, we work free for an additional 30 days to hit it</p>
+                <p style="margin-bottom: 0;"><strong>Week-2 Checkpoint:</strong> If progress is materially off-track and not correctable, you may opt out; we refund 25% and transfer all work-to-date</p>
+            </div>
+            
+            <div class="cta-section">
+                <p>That's it—pick a plan, pay once, we lock your start date and begin.</p>
+            </div>
+        </div>
+        
+        <!-- Page 6: Terms & Key Dates -->
+        <div class="page page-break">
+            <h2>Key Dates</h2>
+            <ul>
+                <li><strong>Alpha Workshop (kickoff):</strong> [Propose two times]</li>
+                <li><strong>Week-1 Go-Live (packages + Capacity Index):</strong> [Date]</li>
+                <li><strong>Week-2 GBP + Checklist Live:</strong> [Date]</li>
+                <li><strong>Week-3 Supplier Protocol + Routing Rules:</strong> [Date]</li>
+                <li><strong>Week-4 Roof Health Plan + Dashboard:</strong> [Date]</li>
+                <li><strong>30-Day Review:</strong> [Date]</li>
+                <li><strong>60-Day Guarantee Review:</strong> [Date]</li>
+            </ul>
+            
+            <h2>Acceptance Criteria</h2>
+            <ul>
+                <li>Packages, Priority Start, and Capacity Index are live and used on quotes/posts</li>
+                <li>Checklist completion rate ≥ 90% for jobs delivered after Week-2</li>
+                <li>Dashboard populated weekly with KPI data</li>
+                <li>Supplier staged-delivery protocol in effect on at least two jobs</li>
+                <li>Roof Health Plan launched with at least 10 initial members or active enrollment offer</li>
+            </ul>
+            
+            <h2>Terms</h2>
+            <ul>
+                <li>Independent contractor; you own all deliverables and IP upon full payment</li>
+                <li>Confidentiality: all shared data, pricing, and processes remain confidential</li>
+                <li>Liability cap: limited to fees paid under this engagement</li>
+                <li>No exclusivity beyond your market; however, we will not implement an identical plan for a direct competitor within a 15-mile radius of Dalton for 12 months</li>
+                <li>Governing law: [State]; venue: [County], unless otherwise agreed</li>
+            </ul>
+            
+            <h2>Signatures</h2>
+            <div class="signature-grid">
+                <div class="signature-block">
+                    <strong>McDonough Roofing</strong>
+                    <div class="signature-line"></div>
+                    <div class="signature-label">Name/Title</div>
+                    <div class="signature-line" style="height: 40px; margin-top: 1.5rem;"></div>
+                    <div class="signature-label">Date</div>
+                </div>
+                <div class="signature-block">
+                    <strong>D'Vaughn House</strong>
+                    <div class="signature-line"></div>
+                    <div class="signature-label">Name/Title</div>
+                    <div class="signature-line" style="height: 40px; margin-top: 1.5rem;"></div>
+                    <div class="signature-label">Date</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page 7: Appendices -->
+        <div class="page page-break">
+            <h2>Appendices</h2>
+            
+            <div class="appendix">
+                <h3>Appendix A: Pre-Qualification Script</h3>
+                <p style="margin-bottom: 0.75rem;"><em>Paste into Messenger/SMS</em></p>
+                <p><strong>Message 1:</strong> "Thanks for reaching out! Quick 4 items so we can help fast: 1) Address 2) Roof type (shingle/metal/flat) + approx. age 3) Insurance or out-of-pocket 4) Ideal timeline (ASAP, 2–4 weeks, next opening)"</p>
+                <p style="margin-bottom: 0;"><strong>Message 2:</strong> "Our next standard start windows are [Month/Month]. If you need sooner, we hold a limited Priority Start slot each month. Typical projects in your area range from $9,500–$18,500 for asphalt and $18,000–$38,000 for standing-seam metal. Want us to run a remote measurement next?"</p>
+            </div>
+            
+            <div class="appendix">
+                <h3>Appendix B: Capacity Index Post (Weekly)</h3>
+                <p style="margin-bottom: 0.75rem;"><strong>Capacity & Scheduling Update — Dalton, OH</strong></p>
+                <ul>
+                    <li>Emergency tarps/repairs: 24–48 hrs; this week: [X] slots</li>
+                    <li>Full replacements (weather-permitting)
+                        <ul>
+                            <li>Week of [Date]: [0/1/2] standard / [0/1] Priority Start</li>
+                            <li>Week of [Date]: [0/1/2] standard / [0/1] Priority Start</li>
+                        </ul>
+                    </li>
+                    <li>Priority Start = earliest available window for time-sensitive projects</li>
+                    <li>To book: send Address, Roof Type, Insurance vs. Cash, Ideal Timeline</li>
+                </ul>
+            </div>
+            
+            <div class="appendix">
+                <h3>Appendix C: 20-Point Photo Checklist (Summary)</h3>
+                <ul>
+                    <li>Arrival/Protection (yard, landscaping, neighbor notice)</li>
+                    <li>Decking exposure and repairs</li>
+                    <li>Underlayment, ice-and-water at eaves/valleys</li>
+                    <li>Starter, drip edge, valley metal</li>
+                    <li>Flashing (chimney, walls, skylights), pipe boots</li>
+                    <li>Ventilation (ridge/box/solar), baffles where applicable</li>
+                    <li>Penetrations sealed and documented</li>
+                    <li>Ridge/hip cap installation</li>
+                    <li>Perimeter/cleanup: magnet sweep, debris haul-out</li>
+                    <li>Final overview shots (front/back/left/right), homeowner walkthrough</li>
+                </ul>
+            </div>
+            
+            <div class="appendix">
+                <h3>Appendix D: Typical Investment Ranges (Dalton area)</h3>
+                <ul>
+                    <li>Asphalt shingle replacement: $9,500–$18,500</li>
+                    <li>Standing-seam metal: $18,000–$38,000</li>
+                    <li>Flat/low-slope (EPDM/TPO/mod): $10,000–$24,000</li>
+                    <li>Repairs/tune-ups: $250–$1,800</li>
+                </ul>
+                <p style="margin: 0;">Variables: pitch, layers, valleys/dormers, decking repair, designer shingles, custom flashing.</p>
+            </div>
+            
+            <div class="appendix">
+                <h3>Appendix E: Service Territory</h3>
+                <ul>
+                    <li>Primary service radius: ~25 miles around 44618</li>
+                    <li>Dominance corridors: Dalton–Orrville–Wooster; Massillon–Navarre–Brewster</li>
+                    <li>Outside radius: case-by-case with premium travel fee</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Final Page: Next Step -->
+        <div class="page page-break">
+            <div style="display: flex; align-items: center; justify-content: center; min-height: 9in;">
+                <div style="text-align: center; max-width: 600px;">
+                    <h2 style="font-size: 3rem; margin-bottom: 2rem;">Next Step</h2>
+                    <p style="font-size: 1.3rem; line-height: 1.8; margin-bottom: 3rem;">Approve this proposal and select your start date for the Alpha Workshop. I'll send a short data checklist and calendar invite.</p>
+                    <p style="font-size: 1.3rem; font-weight: 600; color: #3b82f6; margin-bottom: 0;">Within 30 days, you'll feel the lift: higher average tickets, a calmer schedule, and crews home earlier—without adding a single lead.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

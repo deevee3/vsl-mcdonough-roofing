@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McDonough Roofing Proposal</title>
+    <style>
+        @media print {
+            @page { margin: 0; }
+            body { margin: 0; }
+            .page-break { page-break-after: always; }
+            button { display: none; }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: white;
+        }
+        
+        .page {
+            padding: 0.75in;
+            min-height: 11in;
+            background: white;
+            position: relative;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 2.5rem 0.75in;
+            margin: -0.75in -0.75in 2rem -0.75in;
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+        
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        .meta-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .meta-info div {
+            font-size: 0.9rem;
+        }
+        
+        .meta-info strong {
+            display: block;
+            color: #1e3a8a;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        h2 {
+            color: #1e3a8a;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3b82f6;
+        }
+        
+        h3 {
+            color: #1e40af;
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.75rem 0;
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .objective-card {
+            padding: 1rem;
+            background: #f0f9ff;
+            border-left: 3px solid #3b82f6;
+            font-size: 0.9rem;
+        }
+        
+        .timeline {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .timeline-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .timeline-week {
+            background: #3b82f6;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            min-width: 80px;
+            text-align: center;
+            margin-right: 1rem;
+        }
+        
+        .timeline-content {
+            flex: 1;
+        }
+        
+        .timeline-content h4 {
+            color: #1e40af;
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+        }
+        
+        .timeline-content p {
+            font-size: 0.85rem;
+            margin: 0;
+            color: #64748b;
+        }
+        
+        .pricing-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border: 2px solid #3b82f6;
+        }
+        
+        .pricing-option {
+            background: white;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .pricing-option h4 {
+            color: #1e3a8a;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-option .price {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #3b82f6;
+            margin: 0.5rem 0;
+        }
+        
+        .guarantee-box {
+            background: #ecfdf5;
+            border: 2px solid #10b981;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        
+        .guarantee-box h3 {
+            color: #047857;
+            margin-top: 0;
+        }
+        
+        .signature-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+            padding-top: 2rem;
+            border-top: 2px solid #e2e8f0;
+        }
+        
+        .signature-block {
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 4px;
+        }
+        
+        .signature-block strong {
+            display: block;
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .signature-line {
+            border-bottom: 2px solid #cbd5e1;
+            margin: 2rem 0 0.5rem 0;
+            height: 60px;
+        }
+        
+        .signature-label {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+        
+        .appendix {
+            background: #fafafa;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+            border-left: 4px solid #6b7280;
+        }
+        
+        .appendix h3 {
+            color: #374151;
+            font-size: 1rem;
+            margin-top: 0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            margin: 2rem 0;
+            text-align: center;
+            transition: background 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: #2563eb;
+        }
+        
+        .download-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .download-btn:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        @media print {
+            .download-btn {
+                display: none;
+            }
+        }
+        
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .metric-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+        
+        .metric-card .metric-label {
+            font-size: 0.8rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .metric-card .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <button class="download-btn" onclick="window.print()">📄 Download PDF</button>
+    
+    <div class="container">
+        <!-- Page 1: Cover & Executive Summary -->
+        <div class="page">
+            <div class="header">
+                <h1>The McDonough Opportunity</h1>
+                <div class="subtitle">Capacity-First Profit Kit</div>
+            </div>
+            
+            <div class="meta-info">
+                <div>
+                    <strong>Prepared For:</strong>
+                    McDonough Roofing<br>
+                    Dalton, OH
+                </div>
+                <div>
+                    <strong>Prepared By:</strong>
+                    D'Vaughn House<br>
+                    Date: 11/12/2025<br>
+                    Valid Through: 11/12/2026
+                </div>
+            </div>
+            
+            <h2>Executive Summary</h2>
+            <p>Dalton already voted for McDonough Roofing. This proposal turns that trust into a category you own: premium, predictable roofing that's worth waiting for. We will design scarcity, signal your standards publicly, and monetize what the market already values from you—certainty and craftsmanship.</p>
+            
+            <p><strong>Outcome:</strong> More margin per job, a calmer schedule, crews home earlier, and a documented "McDonough Method" that makes the business more valuable every quarter. No website. No extra leads. Pure operating leverage.</p>
+            
+            <h2>Core Objectives</h2>
+            <p style="margin-bottom: 1.5rem;"><em>90 days, with first wins in 30</em></p>
+            
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <strong>📈 Revenue Lift</strong><br>
+                    Lift average ticket 12–20% by making premium the default (packages + financing)
+                </div>
+                <div class="objective-card">
+                    <strong>💰 Profit Per Crew</strong><br>
+                    Increase profit per crew-day 15% through density, pre-qualification, and supplier coordination
+                </div>
+                <div class="objective-card">
+                    <strong>⚡ Cycle Time</strong><br>
+                    Cut cycle time by 2–3 days via remote measurements, staged deliveries, and photo-verified install checklist
+                </div>
+                <div class="objective-card">
+                    <strong>📅 Capacity Control</strong><br>
+                    Establish a public Capacity Index and Priority Start option so rush converts to revenue
+                </div>
+                <div class="objective-card">
+                    <strong>🔄 Recurring Revenue</strong><br>
+                    Launch a Roof Health Plan (membership) for recurring revenue, storm priority, and lifetime value
+                </div>
+                <div class="objective-card">
+                    <strong>📊 Business Value</strong><br>
+                    Create documented systems that increase enterprise value every quarter
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page 2: Scope of Work -->
+        <div class="page page-break">
+            <h2>Scope of Work</h2>
+            <p style="margin-bottom: 2rem;"><em>Done-for-you build, co-authored with owner</em></p>
+            
+            <h3>1) Monetize Time: Capacity Index + Priority Start</h3>
+            <ul>
+                <li>Weekly Capacity & Scheduling post template and cadence</li>
+                <li>Define and price Priority Start (limited rush slots per month)</li>
+                <li>Messaging scripts for Facebook/Messenger, SMS, and Google Business Profile (GBP)</li>
+            </ul>
+            
+            <h3>2) Monetize Choice: Good–Better–Best Packages + Financing</h3>
+            <ul>
+                <li>Three clear roof packages per material type with warranties and upgrades</li>
+                <li>Financing integrated on every quote (0% promo and long-term options; we coordinate with your lender or provide intros)</li>
+                <li>Proposal language, line-item alternatives, and a price escalation clause addendum</li>
+            </ul>
+            
+            <h3>3) Monetize Density: Corridor Dominance + Routing Rules</h3>
+            <ul>
+                <li>Service radius finalized (~25 miles around 44618) and two dominance corridors:
+                    <ul>
+                        <li>Dalton–Orrville–Wooster</li>
+                        <li>Massillon–Navarre–Brewster</li>
+                    </ul>
+                </li>
+                <li>Routing rules to maximize revenue per mile and reduce windshield time</li>
+                <li>Minimum job size and referral-out policy for sub-minimum work</li>
+            </ul>
+            
+            <h3>4) Monetize Proof: Photo Checklist + Review Engine</h3>
+            <ul>
+                <li>20-point CompanyCam photo checklist embedded into your install flow</li>
+                <li>Remote measurement workflow (EagleView/Hover) to reduce site visits and rework</li>
+                <li>Review prompts that cue specifics (clean-up, communication, on-time), with SMS/email templates</li>
+            </ul>
+            
+            <h3>5) Monetize Relationship: Roof Health Plan</h3>
+            <ul>
+                <li>Annual plan structure (inspection, gutter clean, minor tune-ups, priority storm response)</li>
+                <li>Enrollment flow (QR/Stripe), member leave-behind card, renewal messaging</li>
+                <li>Optional pre-storm drone baselines for faster, cleaner insurance claims</li>
+            </ul>
+            
+            <h3>6) Strategic Assets and Dashboard</h3>
+            <ul>
+                <li><strong>The McDonough Method:</strong> estimating templates, install SOPs, customer scripts, warranty process</li>
+                <li><strong>Alpha Dashboard:</strong> average ticket, premium-tier selection rate, Priority Start uptake, close rate, profit per crew-day, cycle time, review rate, callback rate, revenue per mile</li>
+                <li>10-minute weekly readout and adjustment cadence</li>
+            </ul>
+        </div>
+        
+        <!-- Page 3: Implementation Timeline -->
+        <div class="page page-break">
+            <h2>Implementation Plan and Timeline</h2>
+            <p style="margin-bottom: 1.5rem;"><strong>30-Day Activation</strong></p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-week">WEEK 1</div>
+                    <div class="timeline-content">
+                        <h4>Price, Time, and Intake</h4>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Finalize Good–Better–Best packages and contract addendum</li>
+                            <li>Set Priority Start pricing and limits; publish first Capacity Index post</li>
+                            <li>Launch 4-question pre-qualification flow (Messenger/text) and minimum job policy</li>
+                        </ul>
+                        <p><strong>Owner time:</strong> 60–90 minutes approvals</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-week">WEEK 2</div>
+                    <div class="timeline-content">
+                        <h4>Proof and Presence</h4>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Optimize GBP: services, productized packages, photos, Q&A</li>
+                            <li>Start review engine and photo checklist; enable remote measurements</li>
+                            <li>Draft "Typical Investment" ranges for quotes and posts</li>
+                        </ul>
+                        <p><strong>Owner time:</strong> 30–45 minutes review</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-week">WEEK 3</div>
+                    <div class="timeline-content">
+                        <h4>Density and Ops Rhythm</h4>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Lock service radius and corridor routing rules; map supplier staging</li>
+                            <li>Negotiate supplier protocol: staged deliveries, hot-shots, returns handling</li>
+                            <li>Establish weekly Repair Day cadence and 20-point final inspection walkthrough</li>
+                        </ul>
+                        <p><strong>Owner time:</strong> 45 minutes alignment</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-week">WEEK 4</div>
+                    <div class="timeline-content">
+                        <h4>Membership and Control</h4>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Launch Roof Health Plan enrollment; member communications live</li>
+                            <li>Turn on Alpha Dashboard; run foreman briefing and Crew Safety + Photo Bootcamp</li>
+                            <li>Publish second Capacity Index with availability signals and one Priority Start slot</li>
+                        </ul>
+                        <p><strong>Owner time:</strong> 60 minutes training and sign-off</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h2>Metrics and Reporting</h2>
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Yield</div>
+                    <div class="metric-value">+12-20%</div>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem;">Average ticket lift</p>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Flow</div>
+                    <div class="metric-value">-2-3 days</div>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem;">Cycle time reduction</p>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Profit</div>
+                    <div class="metric-value">+15%</div>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem;">Per crew-day</p>
+                </div>
+            </div>
+            
+            <p style="margin-top: 1.5rem;"><strong>Tracking:</strong> Weekly scorecard + recommendations; 30-day and 60-day reviews covering yield (average ticket, premium-tier selection rate, Priority Start uptake, profit per crew-day), flow (cycle time, on-time starts, review rate), quality (callback rate, checklist completion), and density (revenue per mile, job clustering by corridor).</p>
+        </div>
+        
+        <!-- Page 4: Deliverables -->
+        <div class="page page-break">
+            <h2>Deliverables You Will Receive</h2>
+            <p style="margin-bottom: 1.5rem;"><em>Ready to use</em></p>
+            
+            <ul>
+                <li>Capacity Index post template and monthly calendar</li>
+                <li>Priority Start policy and scripts</li>
+                <li>Good–Better–Best package sheets (asphalt, metal, flat)</li>
+                <li>Financing one-pager for homeowners + quote inserts</li>
+                <li>Contract addendum (price escalation) and proposal language</li>
+                <li>Pre-qualification script (Messenger/SMS) + auto-reply snippets</li>
+                <li>20-point CompanyCam photo checklist and final inspection form</li>
+                <li>Supplier staging/returns SOP and contact email draft</li>
+                <li>Roof Health Plan materials: brochure, QR/Stripe checkout, member emails</li>
+                <li>Alpha Dashboard (Google Sheet/Data Studio) and a weekly reporting template</li>
+                <li>McDonough Method binder (digital + printable)</li>
+            </ul>
+            
+            <h2>Client Responsibilities and Assumptions</h2>
+            <ul>
+                <li>Provide last 20 job records (price, material, duration, callbacks) within 5 days of kickoff</li>
+                <li>Identify supplier contact; participate in a short three-way call for delivery protocol</li>
+                <li>Maintain crew participation in the 20-point checklist and final inspection</li>
+                <li>Enable/approve financing provider; we can introduce options if needed</li>
+                <li>Continue core communication through Facebook and GBP (no website build required)</li>
+            </ul>
+        </div>
+        
+        <!-- Page 5: Investment & Terms -->
+        <div class="page page-break">
+            <h2>Investment and Commercials</h2>
+            
+            <div class="pricing-box">
+                <div class="pricing-option">
+                    <h4>Core 30-Day Build</h4>
+                    <div class="price">$7,500</div>
+                    <p style="margin: 0; font-size: 0.9rem;"><strong>RECOMMENDED</strong> — Includes all deliverables, dashboard, supplier coordination, and crew bootcamp</p>
+                </div>
+                
+                <div class="pricing-option">
+                    <h4>Lite (Implementation Only)</h4>
+                    <div class="price">$4,500</div>
+                    <p style="margin: 0; font-size: 0.9rem;">Excludes supplier negotiation, bootcamp, and dashboard customization</p>
+                </div>
+                
+                <div class="pricing-option">
+                    <h4>Plus (Core + 30 Days On-Site Coaching)</h4>
+                    <div class="price">$12,000</div>
+                    <p style="margin: 0; font-size: 0.9rem;">Includes ride-alongs and hands-on implementation support</p>
+                </div>
+            </div>
+            
+            <h3>Payment Terms</h3>
+            <ul>
+                <li>50% due at acceptance, 50% at the end of Week 3 (prior to Week 4 launch)</li>
+                <li><strong>Alternative:</strong> 70% upfront, 30% at Day 30; or reduced upfront with performance kicker</li>
+            </ul>
+            
+            <div style="background: white; padding: 1.5rem; border-radius: 8px; border: 2px solid #3b82f6; margin: 1.5rem 0; text-align: center;">
+                <p style="margin-bottom: 1rem; font-weight: 600; color: #1e3a8a;">Secure Payment Link</p>
+                <a href="https://www.paypal.com/ncp/payment/665TZ6SSAM738" target="_blank" style="display: inline-block; background: #0070ba; color: white; padding: 0.75rem 2rem; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 1rem;">Pay with PayPal</a>
+                <p style="margin: 1rem 0 0 0; font-size: 0.85rem; color: #64748b;">https://www.paypal.com/ncp/payment/665TZ6SSAM738</p>
+            </div>
+            
+            <h3>Optional Success Fee Model</h3>
+            <p>Lower upfront (e.g., $4,000) + success fee based on lift above baseline:</p>
+            <ul>
+                <li>2% of incremental gross revenue attributable to average ticket lift for 90 days, capped at $8,000</li>
+                <li>Baseline = average of last 20 comparable jobs agreed at kickoff</li>
+            </ul>
+            
+            <div class="guarantee-box">
+                <h3>✓ Guarantee and Risk Reversal</h3>
+                <p><strong>60-Day Lift Guarantee:</strong> If average ticket does not increase at least 10% within 60 days of go-live, we work free for an additional 30 days to hit it.</p>
+                <p style="margin-bottom: 0;"><strong>Week-2 Checkpoint:</strong> If progress is materially off-track and not correctable, you may opt out; we refund 25% of the fee and transfer all work-to-date.</p>
+            </div>
+            
+            <h2>Key Dates</h2>
+            <ul>
+                <li><strong>Alpha Workshop (kickoff):</strong> [Propose two times]</li>
+                <li><strong>Week-1 Go-Live (packages + Capacity Index):</strong> [Date]</li>
+                <li><strong>Week-2 GBP + Checklist Live:</strong> [Date]</li>
+                <li><strong>Week-3 Supplier Protocol + Routing Rules:</strong> [Date]</li>
+                <li><strong>Week-4 Roof Health Plan + Dashboard:</strong> [Date]</li>
+                <li><strong>30-Day Review:</strong> [Date]</li>
+                <li><strong>60-Day Guarantee Review:</strong> [Date]</li>
+            </ul>
+        </div>
+        
+        <!-- Page 6: Acceptance & Terms -->
+        <div class="page page-break">
+            <h2>Acceptance Criteria</h2>
+            <ul>
+                <li>Packages, Priority Start, and Capacity Index are live and used on quotes/posts</li>
+                <li>Checklist completion rate ≥ 90% for jobs delivered after Week-2</li>
+                <li>Dashboard populated weekly with KPI data</li>
+                <li>Supplier staged-delivery protocol in effect on at least two jobs</li>
+                <li>Roof Health Plan launched with at least 10 initial members or active enrollment offer</li>
+            </ul>
+            
+            <h2>Terms (Summary)</h2>
+            <ul>
+                <li>Independent contractor; you own all deliverables and IP upon full payment</li>
+                <li>Confidentiality: all shared data, pricing, and processes remain confidential</li>
+                <li>Liability cap: limited to fees paid under this engagement</li>
+                <li>No exclusivity beyond your market; however, we will not implement an identical plan for a direct competitor within a 15-mile radius of Dalton for 12 months</li>
+                <li>Governing law: [State]; venue: [County], unless otherwise agreed</li>
+            </ul>
+            
+            <h2>Signatures</h2>
+            <div class="signature-section">
+                <div class="signature-block">
+                    <strong>McDonough Roofing</strong>
+                    <div class="signature-line"></div>
+                    <div class="signature-label">Name/Title</div>
+                    <div class="signature-line" style="height: 40px; margin-top: 1rem;"></div>
+                    <div class="signature-label">Date</div>
+                </div>
+                <div class="signature-block">
+                    <strong>[Your Company]</strong>
+                    <div class="signature-line"></div>
+                    <div class="signature-label">Name/Title</div>
+                    <div class="signature-line" style="height: 40px; margin-top: 1rem;"></div>
+                    <div class="signature-label">Date</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page 7: Appendices -->
+        <div class="page page-break">
+            <h2>Appendices</h2>
+            
+            <div class="appendix">
+                <h3>Appendix A: Pre-Qualification Script</h3>
+                <p style="margin-bottom: 0.5rem;"><em>Paste into Messenger/SMS</em></p>
+                <p><strong>Message 1:</strong> "Thanks for reaching out! Quick 4 items so we can help fast: 1) Address 2) Roof type (shingle/metal/flat) + approx. age 3) Insurance or out-of-pocket 4) Ideal timeline (ASAP, 2–4 weeks, next opening)"</p>
+                <p style="margin-bottom: 0;"><strong>Message 2:</strong> "Our next standard start windows are [Month/Month]. If you need sooner, we hold a limited Priority Start slot each month. Typical projects in your area range from $9,500–$18,500 for asphalt and $18,000–$38,000 for standing-seam metal. Want us to run a remote measurement next?"</p>
+            </div>
+            
+            <div class="appendix">
+                <h3>Appendix B: Capacity Index Post (Weekly)</h3>
+                <p style="margin-bottom: 0.5rem;"><strong>Capacity & Scheduling Update — Dalton, OH</strong></p>
+                <ul style="margin: 0.5rem 0 0 1rem;">
+                    <li>Emergency tarps/repairs: 24–48 hrs; this week: [X] slots</li>
+                    <li>Full replacements (weather-permitting)
+                        <ul>
+                            <li>Week of [Date]: [0/1/2] standard / [0/1] Priority Start</li>
+                            <li>Week of [Date]: [0/1/2] standard / [0/1] Priority Start</li>
+                        </ul>
+                    </li>
+                    <li>Priority Start = earliest available window for time-sensitive projects</li>
+                    <li>To book: send Address, Roof Type, Insurance vs. Cash, Ideal Timeline</li>
+                </ul>
+            </div>
+            
+            <div class="appendix">
+                <h3>Appendix C: 20-Point Photo Checklist (Summary)</h3>
+                <ul style="margin: 0.5rem 0 0 1rem;">
+                
